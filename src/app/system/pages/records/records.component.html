@@ -1,0 +1,28 @@
+<div class="title-block">
+    <h3 class="title">
+      Page of records<span class="sparkline bar"></span>
+    </h3>
+  </div>
+  
+  <section class="section text-center" *ngIf="!isLoaded">
+      <loader></loader>
+  </section>
+  
+  <section class="section" *ngIf="isLoaded">
+    <div class="row">
+      <div class="col-md-6">
+        <add-event [categories]="categories"></add-event>
+      </div>
+      <div class="col-md-6">
+        <add-category (onCategoryAdd)="newCategoryAdded($event)"></add-category>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <edit-category
+          [categories]="categories"
+          (onCategoryEdit)="categoryWasEdited($event)"
+        ></edit-category>
+      </div>
+    </div>
+  </section>
